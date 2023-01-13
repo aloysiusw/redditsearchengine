@@ -1,5 +1,8 @@
 # Reddit Search Engine
-A keyword-based search engine for raw data grabbed from Reddit
+A keyword-based search engine for raw data grabbed from Reddit. This project was written as a course project for CSCI 426 - Information Retrieval. A more detailed and step by step explanation of how the code works can be found in the presentation and report document, included in this repo. 
+
+![image](https://user-images.githubusercontent.com/48269287/212358778-ea3fb3db-5118-4bbb-a72d-7152b370c980.png)
+
 
 # Abstract
 
@@ -19,7 +22,10 @@ This project uses [aliparlakci/bulk-downloader-for-reddit](https://github.com/al
 
 # Data collection
 
-ABDFR fetches directly from the Reddit API and has built in redundancies which makes it a more attractive tool than iterating our
+![image](https://user-images.githubusercontent.com/48269287/212358892-44aa3274-4d6b-4b21-a91b-a28c99f1baad.png)
+
+
+BDFR fetches directly from the Reddit API and has built in redundancies which makes it a more attractive tool than iterating our
 own in the short time that we had. Windows Powershell and Python 3 were used to
 install the tool using the command: directly𝑝𝑦𝑡ℎ𝑜𝑛3 − 𝑚 𝑝𝑖𝑝 𝑖𝑛𝑠𝑡𝑎𝑙𝑙 𝑏𝑑𝑓𝑟 –𝑢𝑝𝑔𝑟𝑎𝑑𝑒
 into our machines.
@@ -39,12 +45,20 @@ do was run the setup and then any particular block.
 This version of the project has been modified such that it does not need connection to Google Drive, but rather uses files available in this repo.
 
 # Dataset conversion
+
+![image](https://user-images.githubusercontent.com/48269287/212359065-bd946a23-3254-43d1-82ab-d0a904326d87.png)
+
+
  We used a function to fetch all the raw files in the particular folder with a
 .json extension and added it to a python data structure. It was then converted into a native
 pandas dataframe and saved into a .csv file so we do not have to rerun the processing step
 from the beginning.
 
 # Cleaning the data
+
+![image](https://user-images.githubusercontent.com/48269287/212359121-cf3a47ae-7ca8-4d47-8755-21625e7f02d4.png)
+
+
 Steps were taken to clean the data to avoid issues in the future. Null values were replaced
 with empty strings such as “ “ so as to avoid any issues in processing and certain
 columns, such as boolean columns that reddit uses to markdown posts were removed as
@@ -56,6 +70,10 @@ function to convert it into a readable general format. We left the timezone as t
 UTC.
 
 # Language pre-processing
+
+![image](https://user-images.githubusercontent.com/48269287/212359260-301f0049-7888-4e65-bdb7-0c2c21791140.png)
+
+
 We applied several language pre-processing techniques that were learned in class. Before
 that, however, we combine the title of the post and the body of each post to make one
 new column entry to create a full representation of the text in that submission. We then
@@ -66,6 +84,10 @@ and other unused symbols. We also converted it into a set and used its natural p
 remove duplicates.
 
 # Calculating decay factor
+
+![image](https://user-images.githubusercontent.com/48269287/212359319-c51a5c3d-0983-4136-a340-478499d70618.png)
+
+
 We included an additional column that factors in exponential decay to adjust each
 submissions’ score. We figured that as some of these submissions go back to 2015, the
 contents might not be as relevant as ones fetched in recent days. So we used a common
